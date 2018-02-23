@@ -6,40 +6,19 @@ ENV PATH ${GOPATH}/bin:$PATH
 
 # Install dep
 RUN mkdir -p $GOPATH/src/golang.org/x \
-    && git clone https://github.com/golang/time.git $GOPATH/src/golang.org/x/time \
-    && go install golang.org/x/time
+    && git clone https://github.com/golang/time.git $GOPATH/src/golang.org/x/time
+RUN git clone https://github.com/golang/sys.git $GOPATH/src/golang.org/x/sys
+RUN git clone https://github.com/golang/vgo.git $GOPATH/src/golang.org/x/vgo
+RUN git clone https://github.com/golang/text.git $GOPATH/src/golang.org/x/text
+RUN git clone https://github.com/golang/net.git $GOPATH/src/golang.org/x/net
+RUN git clone https://github.com/golang/exp.git $GOPATH/src/golang.org/x/exp
+RUN git clone https://github.com/golang/perf.git $GOPATH/src/golang.org/x/perf
+RUN git clone https://github.com/golang/image.git $GOPATH/src/golang.org/x/image
+RUN git clone https://github.com/golang/sync.git $GOPATH/src/golang.org/x/sync
+RUN git clone https://github.com/golang/tools.git $GOPATH/src/golang.org/x/tools
+RUN git clone https://github.com/golang/crypto.git $GOPATH/src/golang.org/x/crypto
 
-RUN git clone https://github.com/golang/sys.git $GOPATH/src/golang.org/x/sys \
-    && go install golang.org/x/sys
-
-RUN git clone https://github.com/golang/vgo.git $GOPATH/src/golang.org/x/vgo \
-    && go install golang.org/x/vgo
-
-RUN git clone https://github.com/golang/text.git $GOPATH/src/golang.org/x/text \
-    && go install golang.org/x/text
-
-RUN git clone https://github.com/golang/net.git $GOPATH/src/golang.org/x/net \
-    && go install golang.org/x/net
-
-RUN git clone https://github.com/golang/exp.git $GOPATH/src/golang.org/x/exp \
-    && go install golang.org/x/exp
-
-RUN git clone https://github.com/golang/perf.git $GOPATH/src/golang.org/x/perf \
-    && go install golang.org/x/perf
-
-RUN git clone https://github.com/golang/image.git $GOPATH/src/golang.org/x/image \
-    && go install golang.org/x/image
-
-RUN git clone https://github.com/golang/sync.git $GOPATH/src/golang.org/x/sync \
-    && go install golang.org/x/sync
-
-RUN git clone https://github.com/golang/tools.git $GOPATH/src/golang.org/x/tools \
-    && go install golang.org/x/tools
-
-RUN git clone https://github.com/golang/crypto.git $GOPATH/src/golang.org/x/crypto\
-    && go install golang.org/x/crypto
-
-RUN go get -u github.com/golang/lint/golint
+RUN go get -u -v github.com/golang/lint/golint
 RUN go get -u gopkg.in/alecthomas/gometalinter.v2 \
     && gometalinter.v2 -i
 

@@ -5,20 +5,21 @@ ENV GOPATH /go
 ENV PATH ${GOPATH}/bin:$PATH
 
 # Install dep
-RUN mkdir -p $GOPATH/src/golang.org/x \
- && git clone https://github.com/golang/tools.git $GOPATH/src/golang.org/x/tools
-RUN git clone https://github.com/golang/sys.git $GOPATH/src/golang.org/x/sys
-RUN git clone https://github.com/golang/crypto.git $GOPATH/src/golang.org/x/crypto
-RUN git clone https://github.com/golang/vgo.git $GOPATH/src/golang.org/x/vgo
-RUN git clone https://github.com/golang/text.git $GOPATH/src/golang.org/x/text
-RUN git clone https://github.com/golang/net.git $GOPATH/src/golang.org/x/net
-RUN git clone https://github.com/golang/exp.git $GOPATH/src/golang.org/x/exp
-RUN git clone https://github.com/golang/perf.git $GOPATH/src/golang.org/x/perf
-RUN git clone https://github.com/golang/image.git $GOPATH/src/golang.org/x/image
-RUN git clone https://github.com/golang/sync.git $GOPATH/src/golang.org/x/sync
-RUN git clone https://github.com/golang/time.git $GOPATH/src/golang.org/x/time
-RUN go get -u github.com/golang/lint/golint
-RUN go get -u gopkg.in/alecthomas/gometalinter.v2
+RUN go get -u golang.org/x/tools/... \
+    && go get -u golang.org/x/sys \
+    && go get -u golang.org/x/crypto/... \
+    && go get -u golang.org/x/vgo \
+    && go get -u golang.org/x/text \
+    && go get -u golang.org/x/net \
+    && go get -u golang.org/x/exp \
+    && go get -u golang.org/x/perf \
+    && go get -u golang.org/x/image \
+    && go get -u golang.org/x/sync \
+    && go get -u golang.org/x/time \
+    && go get -u golang.org/x/lint/golint \
+    && go get -u github.com/golang/dep/cmd/dep \
+    && go get -u gopkg.in/alecthomas/gometalinter.v2
+
 RUN gometalinter.v2 -i
 
 # Add apt key for LLVM repository

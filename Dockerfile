@@ -5,9 +5,7 @@ ENV GOPATH /go
 ENV PATH ${GOPATH}/bin:$PATH
 
 # Install dep
-RUN go get -u golang.org/x/tools/... \
-    && go get -u golang.org/x/sys \
-    && go get -u golang.org/x/crypto/... \
+RUN go get -u golang.org/x/sys \
     && go get -u golang.org/x/vgo \
     && go get -u golang.org/x/text \
     && go get -u golang.org/x/net \
@@ -16,6 +14,8 @@ RUN go get -u golang.org/x/tools/... \
     && go get -u golang.org/x/image \
     && go get -u golang.org/x/sync \
     && go get -u golang.org/x/time \
+    && go get -u golang.org/x/crypto/... \
+    && go get -u golang.org/x/tools/... \
     && go get -u golang.org/x/lint/golint \
     && go get -u github.com/golang/dep/cmd/dep \
     && go get -u gopkg.in/alecthomas/gometalinter.v2

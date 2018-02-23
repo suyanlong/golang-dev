@@ -1,2 +1,2 @@
 # golang-dev
-golang devlopment
+golang development

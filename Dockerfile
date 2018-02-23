@@ -18,7 +18,8 @@ RUN git clone https://github.com/golang/sync.git $GOPATH/src/golang.org/x/sync
 RUN git clone https://github.com/golang/tools.git $GOPATH/src/golang.org/x/tools
 RUN git clone https://github.com/golang/crypto.git $GOPATH/src/golang.org/x/crypto
 
-RUN go get -u -v github.com/golang/lint/golint
+RUN git clone https://github.com/golang/lint/golint.git $GOPATH/src/golang.org/x/golint \
+    && go install golang.org/x/golint
 RUN go get -u gopkg.in/alecthomas/gometalinter.v2 \
     && gometalinter.v2 -i
 

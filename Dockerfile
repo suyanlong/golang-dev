@@ -19,9 +19,8 @@ RUN git clone https://github.com/golang/tools.git $GOPATH/src/golang.org/x/tools
 RUN git clone https://github.com/golang/crypto.git $GOPATH/src/golang.org/x/crypto
 
 RUN go get -u gopkg.in/alecthomas/gometalinter.v2 \
-    && gometalinter.v2 -i
-RUN git clone https://github.com/golang/lint.git $GOPATH/src/golang.org/x/golint \
-    && go install golang.org/x/golint
+    && gometalinter.v2 -i \
+    && go get -u github.com/mitchellh/gox
 
 # Add apt key for LLVM repository
 RUN wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add -
